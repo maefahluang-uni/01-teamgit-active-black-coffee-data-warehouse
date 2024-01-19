@@ -51,7 +51,15 @@ public class Counter {
 	// TODO: dev3- count the frequency of word in sentence,
 	// refactor source code from dev1 and dev2
 	public void countFrequency(String word, String sentence) {
-		_ctr = -99;
+		_ctr = 0;  // Initialize the counter to zero
+		String[] words = sentence.toLowerCase().split("\\s+");  // Split sentence into words (case-insensitive)
+	
+		for (String currentWord : words) {
+			if (currentWord.equals(word.toLowerCase())) {  // Compare words in lowercase
+				_ctr++;
+			}
+		}
 	}
+	
 
 }

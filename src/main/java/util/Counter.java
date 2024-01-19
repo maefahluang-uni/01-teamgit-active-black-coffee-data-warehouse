@@ -45,15 +45,43 @@ public class Counter {
         }
     }
 
-	// TODO: dev2- method for increment to closest prime number
 	public void incrementToPrime() {
-		_ctr = -99;
-	}
+        _ctr = findNextPrime(_ctr + 1);
+    }
 
-	// TODO: dev2- method for decrement to closest prime number
+	private int findNextPrime(int num) {
+        while (!isPrime(num)) {
+            num++;
+        }
+        return num;
+    }
+
 	public void decrementToPrime() {
-		_ctr = -99;
-	}
+        if (_ctr > 2) {
+            _ctr = findPreviousPrime(_ctr - 1);
+        } else {
+            _ctr = 2; // 2 is the smallest prime number
+        }
+    }
+	 // Helper method to find the previous prime number
+	 private int findPreviousPrime(int num) {
+        while (!isPrime(num)) {
+            num--;
+        }
+        return num;
+    }
+    // Helper method to check if a number is prime
+    private boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 	// TODO: dev3- count the frequency of word in sentence,
 	// refactor source code from dev1 and dev2
